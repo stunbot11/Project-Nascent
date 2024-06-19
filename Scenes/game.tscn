@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c800o8h7rr82r"]
+[gd_scene load_steps=9 format=3 uid="uid://c800o8h7rr82r"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.cs" id="1_b4jww"]
 [ext_resource type="PackedScene" uid="uid://hpldb0fyp1f5" path="res://Scenes/player.tscn" id="1_kw2qc"]
 [ext_resource type="Texture2D" uid="uid://c64vh4qg57gvi" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_44yle"]
 [ext_resource type="PackedScene" uid="uid://b0ccocw4y7tuc" path="res://Scenes/enemy.tscn" id="3_amq12"]
+[ext_resource type="Script" path="res://Scripts/TileMap.cs" id="3_t3qk0"]
 [ext_resource type="PackedScene" uid="uid://dgw7a4orjsurp" path="res://Scenes/RadialMenu.tscn" id="4_qvlr6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2aet5"]
@@ -12,10 +13,12 @@ texture = ExtResource("2_44yle")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/next_alternative_id = 7
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/custom_data_0 = true
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
@@ -24,6 +27,7 @@ texture = ExtResource("2_44yle")
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0/custom_data_0 = true
 4:0/0 = 0
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_0/angular_velocity = 0.0
@@ -32,6 +36,7 @@ texture = ExtResource("2_44yle")
 5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:0/0/physics_layer_0/angular_velocity = 0.0
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0/custom_data_0 = true
 6:0/0 = 0
 6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:0/0/physics_layer_0/angular_velocity = 0.0
@@ -44,6 +49,7 @@ texture = ExtResource("2_44yle")
 8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:0/0/physics_layer_0/angular_velocity = 0.0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0/custom_data_0 = true
 9:0/0 = 0
 9:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:0/0/physics_layer_0/angular_velocity = 0.0
@@ -72,6 +78,7 @@ texture = ExtResource("2_44yle")
 8:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:1/0/physics_layer_0/angular_velocity = 0.0
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0/custom_data_0 = true
 7:1/0 = 0
 7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:1/0/physics_layer_0/angular_velocity = 0.0
@@ -84,6 +91,7 @@ texture = ExtResource("2_44yle")
 5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_0/angular_velocity = 0.0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0/custom_data_0 = true
 4:1/0 = 0
 4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:1/0/physics_layer_0/angular_velocity = 0.0
@@ -92,6 +100,7 @@ texture = ExtResource("2_44yle")
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0/custom_data_0 = true
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
@@ -100,6 +109,7 @@ texture = ExtResource("2_44yle")
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/custom_data_0 = true
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
@@ -406,6 +416,8 @@ texture = ExtResource("2_44yle")
 
 [sub_resource type="TileSet" id="TileSet_ururo"]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "isMineable"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_2aet5")
 
 [node name="Game" type="Node2D"]
@@ -415,6 +427,8 @@ script = ExtResource("1_b4jww")
 tile_set = SubResource("TileSet_ururo")
 format = 2
 layer_0/tile_data = PackedInt32Array(-196613, 65536, 1, -327683, 65536, 1, -262141, 65536, 1, -131066, 65536, 1, 65540, 65536, 1, -65533, 65536, 1, -327675, 65536, 1, -262143, 196608, 1, -393216, 196608, 1, -131074, 196608, 1, 65531, 196608, 1, -131079, 196608, 1, -327686, 196608, 1, 65538, 327680, 1, 196607, 327680, 1, 131069, 327680, 1, -65540, 327680, 1, -262146, 327680, 1, -327678, 327680, 1, -393212, 327680, 1, -131068, 327680, 1, 5, 524288, 1, -196603, 524288, 1, -196608, 524288, 1, -262144, 524288, 1, -262149, 524288, 1, 131067, 524288, 1, -196616, 0, 1, -196615, 0, 1, -196614, 0, 1, -196612, 0, 1, -131073, 0, 1, -196607, 0, 1, 65537, 0, 1, 65536, 0, 1, 196606, 0, 1, 196605, 0, 1, 131066, 0, 1, 65530, 0, 1, -131065, 0, 1, -65529, 0, 1, 65542, 0, 1, 65541, 0, 1, -393211, 0, 1, -458747, 0, 1, -458748, 0, 1, -458752, 0, 1, -393217, 0, 1, -393218, 0, 1, -393219, 0, 1, -393222, 0, 1, -393223, 0, 1, -327687, 0, 1, -262151, 0, 1)
+script = ExtResource("3_t3qk0")
+_playerPath = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_kw2qc")]
 position = Vector2(1, 0)
@@ -428,6 +442,7 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="RadialMenu" parent="." instance=ExtResource("4_qvlr6")]
+visible = false
 offset_left = -21.0
 offset_top = -26.0
 offset_right = 19.0

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgw7a4orjsurp"]
 
 [ext_resource type="Script" path="res://Scripts/RadialMenu.cs" id="1_hrwr3"]
-[ext_resource type="Texture2D" uid="uid://dsadeccenlg0" path="res://Assets/brackeys_platformer_assets/TempTowerButtonIcon.jpg" id="2_7ji7t"]
-[ext_resource type="Texture2D" uid="uid://de4sqjerkceuu" path="res://Assets/brackeys_platformer_assets/TempXButton.jpg" id="3_bava8"]
+[ext_resource type="Texture2D" uid="uid://bwyq61odvs5eb" path="res://Assets/brackeys_platformer_assets/TempTowerButtonIcon.jpg" id="2_7ji7t"]
+[ext_resource type="Texture2D" uid="uid://j1xwa7c6qe0w" path="res://Assets/brackeys_platformer_assets/TempXButton.jpg" id="3_bava8"]
 
 [node name="RadialMenu" type="Control"]
 layout_mode = 3

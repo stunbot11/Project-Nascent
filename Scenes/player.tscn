@@ -46,7 +46,7 @@ radius = 5.0
 script = ExtResource("1_g5cqd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_gnmhe")
 animation = &"Idle"
 autoplay = "Idle"
@@ -54,5 +54,4 @@ frame = 1
 frame_progress = 0.685177
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_filvj")

@@ -9,7 +9,6 @@ public partial class gameManager : Node2D
 	{
 		radialMenu = GetNode<RadialMenu>("RadialMenu");
 		radialMenu.Hide();
-		GD.Print(radialMenu);
 	}
 
 	public override void _Input(InputEvent @event)
