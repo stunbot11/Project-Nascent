@@ -4,12 +4,12 @@ using System;
 public partial class TileMap : Godot.TileMap
 {
 	[Export] private NodePath _playerPath;
-	private Node2D _player;
+	private player _player;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_player = GetNode<Node2D>(_playerPath);
+		_player = GetNode<player>(_playerPath);
 	}
 
 	public override void _Input(InputEvent @event)
@@ -25,10 +25,9 @@ public partial class TileMap : Godot.TileMap
     private void HandleTileClick(Vector2I tilePosition)
     {
 		TileData tileClicked = GetCellTileData(0, tilePosition);
-		if (tileClicked != null)
+		if (tileClicked != null && (bool)tileClicked.GetCustomData("isMineable"))
 		{
-			GD.Print(tileClicked.GetCustomData("isMineable"));
-	//     ((Player)_player).MoveToTile(tilePosition);
+			_player.SetIsMining(true);
 		}
     }
 }
