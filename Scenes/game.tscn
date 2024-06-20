@@ -1,12 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c800o8h7rr82r"]
+[gd_scene load_steps=11 format=3 uid="uid://c800o8h7rr82r"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.cs" id="1_b4jww"]
 [ext_resource type="PackedScene" uid="uid://hpldb0fyp1f5" path="res://Scenes/player.tscn" id="1_kw2qc"]
 [ext_resource type="Texture2D" uid="uid://c64vh4qg57gvi" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_44yle"]
-[ext_resource type="PackedScene" uid="uid://b0ccocw4y7tuc" path="res://Scenes/enemy.tscn" id="3_amq12"]
+[ext_resource type="PackedScene" uid="uid://b0ccocw4y7tuc" path="res://Scenes/Enemy.tscn" id="3_amq12"]
 [ext_resource type="Script" path="res://Scripts/TileMap.cs" id="3_t3qk0"]
 [ext_resource type="PackedScene" uid="uid://dgw7a4orjsurp" path="res://Scenes/RadialMenu.tscn" id="4_qvlr6"]
-[ext_resource type="PackedScene" uid="uid://dbythynvmkm8k" path="res://Scenes/HUD.tscn" id="7_bpr0r"]
+[ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="7_bpr0r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2aet5"]
 texture = ExtResource("2_44yle")
@@ -421,8 +421,16 @@ custom_data_layer_0/name = "isMineable"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_2aet5")
 
-[node name="Game" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_mg1hd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -152, -32, -20.602, 12.193, 20.602, -12.193, -96, -8, -29.0109, -18.4997, 29.0109, 18.4997, -48, -40, 14.7157, -23.9655, -14.7157, 23.9655, -56, 8, -33.6359, -2.94314, 33.6359, 2.94314, -32, 64, -10.5112, 26.4882, 10.5112, -26.4882, 56, 56, 9.24986, 3.36359, -9.24986, -3.36359, 48, 8, 7.56807, 13.0339, -7.56807, -13.0339, 24, -8, -38.6812, 14.7157, 38.6812, -14.7157, 88, -56, 0, 0, 0, 0, 160, -32)
+}
+point_count = 10
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("enemySpawnTimer")]
 script = ExtResource("1_b4jww")
+enemyScene = ExtResource("3_amq12")
+enemySpawnTimer = NodePath("enemySpawnTimer")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ururo")
@@ -435,9 +443,6 @@ _playerPath = NodePath("../Player")
 position = Vector2(1, 0)
 HUDPath = NodePath("../HUD")
 MiningTimerPath = NodePath("../MiningTimer")
-
-[node name="Enemy" parent="." instance=ExtResource("3_amq12")]
-position = Vector2(72, -33)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, -6)
@@ -455,4 +460,11 @@ offset_bottom = 14.0
 
 [node name="MiningTimer" type="Timer" parent="."]
 
+[node name="enemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Enemy path" type="Path2D" parent="."]
+curve = SubResource("Curve2D_mg1hd")
+
 [connection signal="timeout" from="MiningTimer" to="Player" method="_on_mining_timer_timeout"]
+[connection signal="timeout" from="enemySpawnTimer" to="." method="OnSpawnEnemy"]

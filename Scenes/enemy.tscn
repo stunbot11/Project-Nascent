@@ -1,48 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ccocw4y7tuc"]
+[gd_scene load_steps=4 format=3 uid="uid://b0ccocw4y7tuc"]
 
-[ext_resource type="Texture2D" uid="uid://dq7sk8iruw4r" path="res://Assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_ulwmk"]
+[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_o8fjc"]
+[ext_resource type="Texture2D" uid="uid://bosga0h4t8nv8" path="res://icon.svg" id="2_hyvcm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vexhs"]
-atlas = ExtResource("1_ulwmk")
-region = Rect2(0, 24, 24, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teruc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ys6xq"]
-atlas = ExtResource("1_ulwmk")
-region = Rect2(24, 24, 24, 24)
+[node name="Enemy" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_o8fjc")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3hor"]
-atlas = ExtResource("1_ulwmk")
-region = Rect2(48, 24, 24, 24)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, 4.76837e-07)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_hyvcm")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2euc"]
-atlas = ExtResource("1_ulwmk")
-region = Rect2(72, 24, 24, 24)
+[node name="Area2D" type="Area2D" parent="."]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6cy4v"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vexhs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ys6xq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l3hor")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d2euc")
-}],
-"loop": true,
-"name": &"Slime",
-"speed": 10.0
-}]
-
-[node name="Enemy" type="Node2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_6cy4v")
-animation = &"Slime"
-autoplay = "Slime"
-frame_progress = 0.140103
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_teruc")
