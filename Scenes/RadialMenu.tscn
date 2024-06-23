@@ -20,9 +20,9 @@ texture_normal = ExtResource("2_7ji7t")
 [node name="CloseButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = -8.0
-offset_top = -9.0
+offset_top = -8.0
 offset_right = 8.0
-offset_bottom = 7.0
+offset_bottom = 8.0
 texture_normal = ExtResource("3_bava8")
 
 [connection signal="pressed" from="TowerButton" to="." method="_on_tower_pressed"]

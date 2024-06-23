@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1vbpmf1ywr10"]
+
+[ext_resource type="Script" path="res://3DVersion/Scripts/CursorManager.cs" id="1_smxdd"]
+[ext_resource type="Script" path="res://3DVersion/Scripts/AerialCamera.cs" id="2_heoud"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pwqmd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_2c37v"]
+sky_material = SubResource("ProceduralSkyMaterial_pwqmd")
+
+[sub_resource type="Environment" id="Environment_lwg13"]
+background_mode = 2
+sky = SubResource("Sky_2c37v")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abj3h"]
+albedo_color = Color(0.172549, 0.2, 0.156863, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k1lef"]
+size = Vector2(20, 20)
+
+[node name="GameTest" type="Node3D"]
+
+[node name="CursorManager" type="Node" parent="."]
+script = ExtResource("1_smxdd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lwg13")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 3, 6, 0)
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_abj3h")
+mesh = SubResource("PlaneMesh_k1lef")
+
+[node name="CameraAnchor" type="Node3D" parent="."]
+script = ExtResource("2_heoud")
+
+[node name="Camera3D" type="Camera3D" parent="CameraAnchor"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.34354, 7.76092)
+projection = 1
