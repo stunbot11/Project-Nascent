@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0uwja6bpkvvq"]
+
+[ext_resource type="Shader" path="res://3DVersion/Assets/target_point.gdshader" id="1_jrqlw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4n5wf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxxf1"]
+render_priority = 0
+shader = ExtResource("1_jrqlw")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/radius = 1.0
+
+[sub_resource type="Animation" id="Animation_8anwu"]
+resource_name = "new_animation"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.1, 0.1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lkxw5"]
+_data = {
+"new_animation": SubResource("Animation_8anwu")
+}
+
+[node name="TargetPoint" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 1, 0, -0.1, -4.37114e-08, 0, 0, 0)
+transparency = 1.0
+mesh = SubResource("QuadMesh_4n5wf")
+surface_material_override/0 = SubResource("ShaderMaterial_hxxf1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lkxw5")
+}

@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1vbpmf1ywr10"]
+[gd_scene load_steps=15 format=3 uid="uid://d1vbpmf1ywr10"]
 
 [ext_resource type="Script" path="res://3DVersion/Scripts/CursorManager.cs" id="1_smxdd"]
+[ext_resource type="Script" path="res://3DVersion/Scripts/GameManagerThreeD.cs" id="1_vw11a"]
+[ext_resource type="PackedScene" uid="uid://c0uwja6bpkvvq" path="res://3DVersion/Scenes/target_point.tscn" id="2_ce8xf"]
 [ext_resource type="Script" path="res://3DVersion/Scripts/AerialCamera.cs" id="2_heoud"]
+[ext_resource type="PackedScene" uid="uid://c48rpqlgi8lux" path="res://3DVersion/Scenes/temp_character.tscn" id="5_st16s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pwqmd"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,7 +25,21 @@ albedo_color = Color(0.172549, 0.2, 0.156863, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_k1lef"]
 size = Vector2(20, 20)
 
-[node name="GameTest" type="Node3D"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_ckjy1"]
+vertices = PackedVector3Array(-9.5, 0.6, -9.5, -9.5, 0.6, 9.5, 9.5, 0.6, 9.5, 9.5, 0.6, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhsfr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wn3lv"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2as65"]
+size = Vector3(20, 1, 20)
+
+[node name="Root" type="Node3D"]
+script = ExtResource("1_vw11a")
+targetPointPrefab = ExtResource("2_ce8xf")
 
 [node name="CursorManager" type="Node" parent="."]
 script = ExtResource("1_smxdd")
@@ -35,6 +52,7 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Ground" type="MeshInstance3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_abj3h")
 mesh = SubResource("PlaneMesh_k1lef")
 
@@ -42,5 +60,22 @@ mesh = SubResource("PlaneMesh_k1lef")
 script = ExtResource("2_heoud")
 
 [node name="Camera3D" type="Camera3D" parent="CameraAnchor"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.34354, 7.76092)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10)
 projection = 1
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ckjy1")
+
+[node name="TempGround" type="StaticBody3D" parent="NavigationRegion3D"]
+collision_layer = 3
+physics_material_override = SubResource("PhysicsMaterial_nhsfr")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/TempGround"]
+mesh = SubResource("BoxMesh_wn3lv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/TempGround"]
+shape = SubResource("BoxShape3D_2as65")
+
+[node name="TempCharacter" parent="." instance=ExtResource("5_st16s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
