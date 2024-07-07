@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1vbpmf1ywr10"]
+[gd_scene load_steps=16 format=3 uid="uid://d1vbpmf1ywr10"]
 
 [ext_resource type="Script" path="res://3DVersion/Scripts/CursorManager.cs" id="1_smxdd"]
 [ext_resource type="Script" path="res://3DVersion/Scripts/GameManagerThreeD.cs" id="1_vw11a"]
@@ -37,13 +37,6 @@ size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2as65"]
 size = Vector3(20, 1, 20)
-
-[sub_resource type="Curve3D" id="Curve3D_bbrwv"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 7.58705, 1.76579, -4.33668, 0, 0, 0, 0, 0, 0, -8.44771, 2.04022, -8.18472, 0, 0, 0, 0, 0, 0, 2.02195, 1.3859, 7.31232, 0, 0, 0, 0, 0, 0, -8.87702, 1.31127, 9.00985),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
 
 [node name="Root" type="Node3D" node_paths=PackedStringArray("enemySpawnTimer")]
 script = ExtResource("1_vw11a")
@@ -89,9 +82,6 @@ shape = SubResource("BoxShape3D_2as65")
 
 [node name="TempCharacter" parent="." instance=ExtResource("5_st16s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-
-[node name="Enemy path" type="Path3D" parent="."]
-curve = SubResource("Curve3D_bbrwv")
 
 [node name="Enemy Spawner Timer" type="Timer" parent="."]
 wait_time = 2.0
