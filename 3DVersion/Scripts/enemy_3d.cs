@@ -1,31 +1,33 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class enemy_3d : CharacterBody3D
 {
     [Export] private NavigationAgent3D navigationAgent;
+    [Export] private Node3D target;
 
     private int _healthpoints;
-    private float speed;
-    private float accel;
-    private float deltaTime;
+    private float speed = 1;
+    private float accel = 10;
 
     private Vector3 direction;
 
-    private Node3D target;
-    private gameManager gameManager;
+    private GameManagerThreeD gameManager;
 
     public override void _Ready()
     {
-        gameManager = GetNode<gameManager>("/root/Root");
+        gameManager = GetNode<GameManagerThreeD>("/root/Root");
     }
 
     public override void _Process(double delta)
     {
-        navigationAgent.TargetPosition = target.Position;
-        direction = navigationAgent.GetNextPathPosition().Normalized();
+        navigationAgent.TargetPosition = target.GlobalPosition;
+        direction = navigationAgent.GetNextPathPosition() - GlobalPosition;
+        direction = direction.Normalized();
         Velocity = Velocity.Lerp(direction * speed, accel * (float)delta);
 
+        MoveAndSlide();
     }
 
     public void Initialize(Texture3D sprite, int healthpoints, float _speed)

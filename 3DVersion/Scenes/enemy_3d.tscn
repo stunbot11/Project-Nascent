@@ -6,8 +6,9 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4k0m0"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("navigationAgent")]
 script = ExtResource("1_b6b3i")
+navigationAgent = NodePath("NavigationAgent3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_nu220")

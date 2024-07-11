@@ -27,7 +27,7 @@ albedo_color = Color(0.172549, 0.2, 0.156863, 1)
 size = Vector2(20, 20)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ckjy1"]
-vertices = PackedVector3Array(-9.5, 0.6, -9.5, -9.5, 0.6, 9.5, 9.5, 0.6, 9.5, 9.5, 0.6, -9.5)
+vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhsfr"]
@@ -85,3 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Enemy Spawner Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_mhd8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.74328, 1.87666, -2.32049)
+target = NodePath("../TempCharacter")

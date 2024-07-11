@@ -27,8 +27,8 @@ public partial class GameManagerThreeD : Node3D
 
     private List<EnemyData> enemyData = new() //finds the png's for the enemies
 	{
-        new EnemyData {sprite = GD.Load<Texture3D>("res://Assets/brackeys_platformer_assets/sprites/slime_green.png"), healthPoints = 5, speed = 3 },
-        new EnemyData {sprite = GD.Load<Texture3D>("res://Assets/brackeys_platformer_assets/sprites/slime_purple.png"), healthPoints = 10, speed = 1 },
+        //new EnemyData {sprite = GD.Load<Texture3D>("res://Assets/brackeys_platformer_assets/sprites/slime_green.png"), healthPoints = 5, speed = 3 },
+        //new EnemyData {sprite = GD.Load<Texture3D>("res://Assets/brackeys_platformer_assets/sprites/slime_purple.png"), healthPoints = 10, speed = 1 },
     };
 
     private List<(int, int)[]> waves = new() //defines what spawns on what wave
@@ -42,8 +42,7 @@ public partial class GameManagerThreeD : Node3D
 
     public override void _Ready()
     {
-        enemiesParent = GetNode("Enemy path");
-        StartWave(0);
+        //StartWave(0);
         cam = GetNode<Camera3D>("CameraAnchor/Camera3D");
 		tempPlayer = GetNode<PlayerThreeD>("TempCharacter");
     }
@@ -94,7 +93,7 @@ public partial class GameManagerThreeD : Node3D
         waveCount = waveData.Count;
         enemySpawnTimer.Start();
     }
-
+    /*
     private void OnSpawnEnemy()
     {
         if (currentWavePosition >= waveData.Count) return;
@@ -109,7 +108,7 @@ public partial class GameManagerThreeD : Node3D
         enemy.Initialize(d.sprite, d.healthPoints, d.speed);
 
     }
-
+    */
     public void EndEnemy(Node enemy)
     {
         enemy.QueueFree();
