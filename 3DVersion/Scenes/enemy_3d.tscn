@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1otep6s8t0wm"]
+[gd_scene load_steps=6 format=3 uid="uid://bvj0wac6spnbf"]
 
 [ext_resource type="Script" path="res://3DVersion/Scripts/enemy_3d.cs" id="1_b6b3i"]
 [ext_resource type="Shader" path="res://3DVersion/Assets/target_point.gdshader" id="2_iehxs"]
