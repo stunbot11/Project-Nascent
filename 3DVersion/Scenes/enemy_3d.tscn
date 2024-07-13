@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1otep6s8t0wm"]
+[gd_scene load_steps=6 format=3 uid="uid://b1otep6s8t0wm"]
 
 [ext_resource type="Script" path="res://3DVersion/Scripts/enemy_3d.cs" id="1_b6b3i"]
+[ext_resource type="Shader" path="res://3DVersion/Assets/target_point.gdshader" id="2_iehxs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nu220"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nt6ic"]
+render_priority = 0
+shader = ExtResource("2_iehxs")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/radius = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4k0m0"]
 
@@ -14,6 +21,7 @@ navigationAgent = NodePath("NavigationAgent3D")
 shape = SubResource("CapsuleShape3D_nu220")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_overlay = SubResource("ShaderMaterial_nt6ic")
 mesh = SubResource("CapsuleMesh_4k0m0")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
