@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1vbpmf1ywr10"]
+[gd_scene load_steps=14 format=3 uid="uid://d1vbpmf1ywr10"]
 
 [ext_resource type="Script" path="res://3DVersion/Scripts/CursorManager.cs" id="1_smxdd"]
 [ext_resource type="Script" path="res://3DVersion/Scripts/GameManagerThreeD.cs" id="1_vw11a"]
@@ -19,12 +19,6 @@ background_mode = 2
 sky = SubResource("Sky_2c37v")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abj3h"]
-albedo_color = Color(0.172549, 0.2, 0.156863, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_k1lef"]
-size = Vector2(20, 20)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ckjy1"]
 vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
@@ -53,11 +47,6 @@ environment = SubResource("Environment_lwg13")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 3, 6, 0)
 shadow_enabled = true
-
-[node name="Ground" type="MeshInstance3D" parent="."]
-visible = false
-material_override = SubResource("StandardMaterial3D_abj3h")
-mesh = SubResource("PlaneMesh_k1lef")
 
 [node name="CameraAnchor" type="Node3D" parent="."]
 script = ExtResource("2_heoud")
