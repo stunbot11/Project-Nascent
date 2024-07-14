@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1vbpmf1ywr10"]
+[gd_scene load_steps=15 format=3 uid="uid://d1vbpmf1ywr10"]
 
 [ext_resource type="Script" path="res://3DVersion/Scripts/CursorManager.cs" id="1_smxdd"]
 [ext_resource type="Script" path="res://3DVersion/Scripts/GameManagerThreeD.cs" id="1_vw11a"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://3DVersion/Scripts/AerialCamera.cs" id="2_heoud"]
 [ext_resource type="PackedScene" uid="uid://bvj0wac6spnbf" path="res://3DVersion/Scenes/enemy_3d.tscn" id="2_mhd8w"]
 [ext_resource type="PackedScene" uid="uid://c48rpqlgi8lux" path="res://3DVersion/Scenes/temp_character.tscn" id="5_st16s"]
+[ext_resource type="PackedScene" uid="uid://de6usqnbbjn25" path="res://3DVersion/Scenes/tower_selection_menu.tscn" id="7_j22vj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pwqmd"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -79,3 +80,6 @@ wait_time = 2.0
 [node name="CharacterBody3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_mhd8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.74328, 1.87666, -2.32049)
 target = NodePath("../TempCharacter")
+
+[node name="TowerSelectionMenu" parent="." instance=ExtResource("7_j22vj")]
+visible = false

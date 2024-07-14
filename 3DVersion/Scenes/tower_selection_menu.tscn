@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://de6usqnbbjn25"]
+
+[ext_resource type="Script" path="res://3DVersion/Scripts/TowerSelectionMenu.cs" id="1_hk8rb"]
+[ext_resource type="Texture2D" uid="uid://bopaeonq10aar" path="res://3DVersion/Assets/cancel.svg" id="2_x1equ"]
+[ext_resource type="Texture2D" uid="uid://b631t5371ndar" path="res://3DVersion/Assets/chess-rook.svg" id="3_h5v5a"]
+[ext_resource type="Texture2D" uid="uid://ovavc5qx1qgi" path="res://3DVersion/Assets/shield.svg" id="4_to7uj"]
+
+[node name="TowerSelectionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hk8rb")
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 17.0
+offset_right = 45.0
+offset_bottom = 81.0
+texture_normal = ExtResource("2_x1equ")
+
+[node name="TurretButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 21.0
+offset_right = 85.0
+offset_bottom = 85.0
+texture_normal = ExtResource("3_h5v5a")
+
+[node name="ShieldButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -79.0
+offset_top = -78.0
+offset_right = -15.0
+offset_bottom = -14.0
+texture_normal = ExtResource("4_to7uj")

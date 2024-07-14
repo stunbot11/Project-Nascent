@@ -17,6 +17,7 @@ public partial class GameManagerThreeD : Node3D
     private int currentWaveIndex;
     private int waveCount;
     private Node enemiesParent;
+    private TowerSelectionMenu towerMenu;
 
     struct EnemyData //defines the characterisitcs of the enemeies
     {
@@ -45,6 +46,7 @@ public partial class GameManagerThreeD : Node3D
         //StartWave(0);
         cam = GetNode<Camera3D>("CameraAnchor/Camera3D");
 		tempPlayer = GetNode<PlayerThreeD>("TempCharacter");
+        towerMenu = GetNode<TowerSelectionMenu>("TowerSelectionMenu");
     }
 
     public override void _Input(InputEvent @event)
@@ -55,6 +57,10 @@ public partial class GameManagerThreeD : Node3D
 		} else {
 			clickedThisFrame = false;
 		}
+
+        if(@event.IsActionPressed("Open Tower Menu")) {
+            towerMenu.setIsMenuShowing(!towerMenu.getIsMenuShowing());
+        }
     }
 
     public override void _PhysicsProcess(double delta)
