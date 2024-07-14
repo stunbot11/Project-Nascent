@@ -41,7 +41,6 @@ public partial class TowerSelectionMenu : Control
 		float angle = index * 2 * Mathf.Pi / buttonCount;
 		Vector2 targetPosition = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius - button.Size / 2;
 		button.Position = targetPosition;
-		GD.Print(button.Name, angle, targetPosition, button.Position);
 
 		switch (button.Name) {
 			case "TurretButton":

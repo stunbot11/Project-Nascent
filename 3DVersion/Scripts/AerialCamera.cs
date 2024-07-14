@@ -29,7 +29,7 @@ public partial class AerialCamera : Node3D
 			if(e.ButtonIndex == MouseButton.WheelUp || e.ButtonIndex == MouseButton.WheelDown) {
 				if(dragging) return;
 				float newZoomSize = cam.Size + 0.3f * (e.ButtonIndex == MouseButton.WheelUp ? -1f : 1f);
-				cam.Size = Mathf.Clamp(newZoomSize, 3f, 15f);
+				cam.Size = Mathf.Clamp(newZoomSize, 10f, 50f);
 			} else {
 				dragging = e.Pressed;
 			}
