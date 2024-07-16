@@ -51,9 +51,9 @@ public partial class GameManagerThreeD : Node3D
 
     public override void _Input(InputEvent @event)
     {
-        if (@event is InputEventMouseButton e && e.Pressed && e.ButtonIndex == MouseButton.Left && !towerMenu.getIsMenuShowing()) {
+        if (@event.IsActionPressed("Move Player") && @event is InputEventMouseButton eventMouseButton && !towerMenu.getIsMenuShowing()) {
 			clickedThisFrame = true;
-			clickMousePos = e.Position;
+			clickMousePos = eventMouseButton.Position;
 		} else {
 			clickedThisFrame = false;
 		}
